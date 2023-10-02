@@ -30,6 +30,11 @@ app.use("/api/bar-chart", barChartRoute);
 app.use("/api/pie-chart", pieChartRouter);
 app.use("/api/combinedResponse", combinedResponseRouter);
 
+
+app.get("/", (req, res) => {
+  res.send("Welcome to our Transaction Board status!!!");
+});
+
 // Start the server
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => {
