@@ -6,7 +6,7 @@ const statisticsController = require("../controllers/statisticsController");
 router.get("/", async (req, res) => {
   try {
     const { month } = req.query;
-    const statistics = await statisticsController.fetchStatistics(month);
+    const statistics = await statisticsController.calculateStatistics(month);
     res.json(statistics);
   } catch (error) {
     console.error("Error while fetching statistics:", error);

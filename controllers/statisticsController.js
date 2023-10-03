@@ -1,7 +1,7 @@
 const Transaction = require("../model/Transaction");
 
 // Fetch statistics for the selected month
-const fetchStatistics = async (month) => {
+const calculateStatistics = async (month) => {
   try {
     const selectedMonth = new Date(`${month}-01`);
     if (isNaN(selectedMonth.getTime())) {
@@ -64,5 +64,5 @@ const fetchStatistics = async (month) => {
 };
 
 module.exports = {
-  fetchStatistics,
+  calculateStatistics,
 };

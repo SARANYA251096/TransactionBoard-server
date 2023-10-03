@@ -1,8 +1,6 @@
-// routes/combinedResponse.js
-
 const express = require("express");
 const router = express.Router();
-const barChartController = require("../controllers/barChartController");
+const combinedResponseController = require("../controllers/combinedResponseController");
 
 // Define the combined response route
 router.get("/", async (req, res) => {
@@ -17,13 +15,13 @@ router.get("/", async (req, res) => {
       return res.status(400).json({ error: "Invalid date format" });
     }
 
-    // Call the getBarChartData function with the selectedMonth
-    const barChartData = await barChartController.getBarChartData(
+    // Call the combineResponses function with the selectedMonth
+    const combinedResponse = await combinedResponseController.combineResponses(
       selectedMonth
     );
 
-    // Return the bar chart data as JSON response
-    res.json(barChartData);
+    // Return the combined response as JSON
+    res.json(combinedResponse);
   } catch (error) {
     console.error("Error while fetching combined response:", error);
     res.status(500).json({ error: "Failed to fetch combined response" });

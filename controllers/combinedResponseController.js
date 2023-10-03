@@ -6,14 +6,20 @@ const pieChartController = require("./pieChartController");
 
 const combineResponses = async (month) => {
   try {
+    // Fetch data from the three controllers
     const statisticsData = await statisticsController.calculateStatistics(
       month
     );
     const barChartData = await barChartController.getBarChartData(month);
     const pieChartData = await pieChartController.getPieChartData(month);
 
+    // Create the combined response with the desired structure
     const combinedResponse = {
-      statistics: statisticsData,
+      statistics: {
+        totalSaleAmount: statisticsData.totalSaleAmount,
+        totalSoldItems: statisticsData.totalSoldItems,
+        totalNotSoldItems: statisticsData.totalNotSoldItems,
+      },
       barChart: barChartData,
       pieChart: pieChartData,
     };

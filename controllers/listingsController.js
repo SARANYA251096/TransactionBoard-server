@@ -15,13 +15,9 @@ const listTransactions = async (req, res) => {
         $or: [
           { title: { $regex: new RegExp(`^${search}`, "i") } },
           { description: { $regex: new RegExp(`^${search}`, "i") } },
-          { price: { $eq: parseFloat(search) } },
         ],
       };
     }
-
-
-
 
     console.log("Constructed Query:", query);
 
@@ -31,15 +27,13 @@ const listTransactions = async (req, res) => {
       .skip(skip)
       .limit(parseInt(perPage));
 
-    const totalPages = Math.ceil(totalDocs / parseInt(perPage));
-
     console.log("Query Result:", transactions);
 
     res.json({
       docs: transactions,
       totalDocs,
       limit: parseInt(perPage),
-      totalPages,
+      totalPages: Math.ceil(totalDocs / parseInt(perPage)),
       page: parseInt(page),
     });
   } catch (error) {
@@ -47,7 +41,6 @@ const listTransactions = async (req, res) => {
     res.status(500).json({ error: "Failed to list transactions" });
   }
 };
-
 
 module.exports = {
   listTransactions,

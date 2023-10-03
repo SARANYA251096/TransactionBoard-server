@@ -15,7 +15,6 @@ db();
 
 // route files
 const initializeRoute = require("./routes/initialize");
-const transactionsRoute = require("./routes/transactions");
 const listTransactionsRoute = require("./routes/listTransactions");
 const statisticsRoute = require("./routes/statistics");
 const barChartRoute = require("./routes/barChart");
@@ -23,7 +22,6 @@ const pieChartRouter = require("./routes/pieChart");
 const combinedResponseRouter = require("./routes/combinedResponse");
 
 app.use("/api/initialize", initializeRoute);
-app.use("/api/transactions", transactionsRoute);
 app.use("/api/list-transactions", listTransactionsRoute);
 app.use("/api/statistics", statisticsRoute);
 app.use("/api/bar-chart", barChartRoute);
